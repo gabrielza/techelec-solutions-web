@@ -1,14 +1,25 @@
-<!--
-  Static HTML stub so the Netlify build bots discover the "quote" form.
-  The real, styled form lives in src/pages/contact.astro and posts to /contact/?success=1.
--->
-<form name="quote" netlify netlify-honeypot="bot-field" hidden>
-  <input type="text" name="name" />
-  <input type="tel" name="phone" />
-  <input type="email" name="email" />
-  <input type="text" name="area" />
-  <select name="property"><option></option></select>
-  <input type="checkbox" name="interest" />
-  <textarea name="message"></textarea>
-  <input type="text" name="bot-field" />
-</form>
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>form stub</title></head>
+  <body>
+    <!--
+      Static HTML stub so Netlify's build bot detects the "quote" form during
+      post-processing. The real, styled form lives in src/pages/contact.astro
+      and posts to /contact/?success=1.
+    -->
+    <form name="quote" data-netlify="true" netlify-honeypot="bot-field" method="POST">
+      <input type="hidden" name="form-name" value="quote" />
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="text" name="area" />
+      <select name="property">
+        <option>Residential</option>
+      </select>
+      <input type="checkbox" name="interest" value="Solar PV system" />
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+      <button type="submit">Send</button>
+    </form>
+  </body>
+</html>

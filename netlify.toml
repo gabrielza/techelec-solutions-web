@@ -14,11 +14,6 @@
 [build.processing.html]
   pretty_urls = true
 
-# Enable Netlify Forms detection on the static stub at /public/__forms.html
-# (The real, styled form lives in src/pages/contact.astro and posts to /contact/?success=1.)
-[forms]
-  # leave empty — presence of [forms] + the stub HTML enables form detection
-
 [[headers]]
   for = "/*"
   [headers.values]
