@@ -1,0 +1,68 @@
+---
+import { site, whatsappLink, telLink } from "../data/site";
+import { nav } from "../data/nav";
+import Logo from "./Logo.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-slate-200 bg-[color:var(--color-ink)] text-slate-300">
+  <div class="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-4">
+    <div class="lg:col-span-1">
+      <div class="rounded-lg bg-white p-3 inline-block">
+        <Logo class="h-9 w-auto" />
+      </div>
+      <p class="mt-4 max-w-xs text-sm text-slate-400">{site.description}</p>
+    </div>
+
+    <div>
+      <h4 class="text-sm font-semibold uppercase tracking-wider text-white">Explore</h4>
+      <ul class="mt-4 space-y-2 text-sm">
+        {nav.map((n) => (
+          <li><a href={n.href} class="hover:text-white">{n.label}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-sm font-semibold uppercase tracking-wider text-white">Contact</h4>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href={telLink} class="hover:text-white">{site.phoneDisplay}</a></li>
+        <li><a href={`mailto:${site.email}`} class="hover:text-white">{site.email}</a></li>
+        <li class="text-slate-400">
+          {site.address.street}<br />
+          {site.address.suburb}, {site.address.city}<br />
+          {site.address.postal}
+        </li>
+        <li class="text-slate-400">{site.hours}</li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="text-sm font-semibold uppercase tracking-wider text-white">Get in touch</h4>
+      <div class="mt-4 flex flex-col gap-2">
+        <a href={whatsappLink} target="_blank" rel="noopener" class="btn-whatsapp text-sm w-fit">WhatsApp Us</a>
+        <a href="/contact/" class="btn-primary text-sm w-fit">Request a Quote</a>
+      </div>
+      <div class="mt-6 flex gap-3">
+        {site.social.facebook && (
+          <a href={site.social.facebook} target="_blank" rel="noopener" aria-label="Facebook" class="rounded-full bg-white/10 p-2 hover:bg-white/20">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.5c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+        )}
+        {site.social.instagram && (
+          <a href={site.social.instagram} target="_blank" rel="noopener" aria-label="Instagram" class="rounded-full bg-white/10 p-2 hover:bg-white/20">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {year} {site.legalName}. All rights reserved.</p>
+      <p>Master Deye Installer · PV GreenCard · ECASA registered</p>
+    </div>
+  </div>
+</footer>

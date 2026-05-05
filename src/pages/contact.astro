@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, whatsappLink, telLink } from "../data/site";
+
+const submitted = Astro.url.searchParams.get("success") === "1";
+---
+<BaseLayout
+  title="Request a Quote"
+  description="Contact Techelec Solutions for a free site assessment and itemised quote on solar, backup and electrical installations across Cape Town."
+>
+  <section class="bg-[color:var(--color-ink)] py-20 text-white">
+    <div class="mx-auto max-w-7xl px-6">
+      <span class="eyebrow !bg-white/10 !text-white">Contact</span>
+      <h1 class="mt-4 text-4xl font-bold sm:text-5xl">Let's talk power</h1>
+      <p class="mt-4 max-w-2xl text-slate-300">Free site assessment. Honest itemised quote. Usually back to you within one business day.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid gap-12 lg:grid-cols-5">
+      <!-- FORM -->
+      <div class="lg:col-span-3">
+        {submitted && (
+          <div class="mb-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-emerald-900">
+            <p class="font-semibold">Thanks — your message is in.</p>
+            <p class="mt-1 text-sm">We'll be in touch within one business day. For anything urgent, WhatsApp us on <a href={whatsappLink} class="font-semibold underline">{site.phoneDisplay}</a>.</p>
+          </div>
+        )}
+
+        <form
+          name="quote"
+          method="POST"
+          action="/contact/?success=1"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="space-y-5 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
+        >
+          <input type="hidden" name="form-name" value="quote" />
+          <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            <label class="block">
+              <span class="text-sm font-semibold">Full name *</span>
+              <input required name="name" type="text" autocomplete="name" class="mt-1 block w-full rounded-lg border-slate-300 bg-white px-4 py-3 text-sm shadow-sm ring-1 ring-slate-200 focus:border-[color:var(--color-brand-blue)] focus:ring-2 focus:ring-[color:var(--color-brand-blue)]/30 focus:outline-none" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-semibold">Phone / WhatsApp *</span>
+              <input required name="phone" type="tel" autocomplete="tel" class="mt-1 block w-full rounded-lg border-slate-300 bg-white px-4 py-3 text-sm shadow-sm ring-1 ring-slate-200 focus:border-[color:var(--color-brand-blue)] focus:ring-2 focus:ring-[color:var(--color-brand-blue)]/30 focus:outline-none" />
+            </label>
+          </div>
+
+          <label class="block">
+            <span class="text-sm font-semibold">Email</span>
+            <input name="email" type="email" autocomplete="email" class="mt-1 block w-full rounded-lg border-slate-300 bg-white px-4 py-3 text-sm shadow-sm ring-1 ring-slate-200 focus:border-[color:var(--color-brand-blue)] focus:ring-2 focus:ring-[color:var(--color-brand-blue)]/30 focus:outline-none" />
+          </label>
+
+          <div class="grid gap-5 sm:grid-cols-2">
+            <label class="block">
+              <span class="text-sm font-semibold">Suburb / area *</span>
+              <input required name="area" type="text" placeholder="e.g. Brackenfell" class="mt-1 block w-full rounded-lg border-slate-300 bg-white px-4 py-3 text-sm shadow-sm ring-1 ring-slate-200 focus:border-[color:var(--color-brand-blue)] focus:ring-2 focus:ring-[color:var(--color-brand-blue)]/30 focus:outline-none" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-semibold">Property type</span>
+              <select name="property" class="mt-1 block w-full rounded-lg border-slate-300 bg-white px-4 py-3 text-sm shadow-sm ring-1 ring-slate-200 focus:border-[color:var(--color-brand-blue)] focus:ring-2 focus:ring-[color:var(--color-brand-blue)]/30 focus:outline-none">
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Agricultural / Farm</option>
+                <option>Industrial</option>
+              </select>
+            </label>
+          </div>
+
+          <fieldset>
+            <legend class="text-sm font-semibold">What are you interested in? *</legend>
+            <div class="mt-2 grid gap-2 sm:grid-cols-2">
+              {[
+                "Solar PV system",
+                "Battery backup",
+                "Hybrid solar + backup",
+                "CoC inspection",
+                "General electrical work",
+                "Not sure — please advise",
+              ].map((opt) => (
+                <label class="flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-sm hover:bg-slate-50">
+                  <input type="checkbox" name="interest" value={opt} class="rounded text-[color:var(--color-brand-red)] focus:ring-[color:var(--color-brand-red)]" />
+                  {opt}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <label class="block">
+            <span class="text-sm font-semibold">Tell us a bit more</span>
+            <textarea name="message" rows="4" placeholder="Average monthly electricity bill, what you'd like to keep on during load-shedding, timing, etc." class="mt-1 block w-full rounded-lg border-slate-300 bg-white px-4 py-3 text-sm shadow-sm ring-1 ring-slate-200 focus:border-[color:var(--color-brand-blue)] focus:ring-2 focus:ring-[color:var(--color-brand-blue)]/30 focus:outline-none"></textarea>
+          </label>
+
+          <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+            <p class="text-xs text-slate-500">By submitting, you agree to be contacted about this enquiry. We never share your details.</p>
+            <button type="submit" class="btn-primary">Send Enquiry</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="space-y-4 lg:col-span-2">
+        <div class="rounded-2xl bg-[color:var(--color-ink)] p-6 text-white">
+          <h2 class="font-semibold">Prefer to chat?</h2>
+          <p class="mt-2 text-sm text-slate-300">WhatsApp is usually the fastest way to reach us during the day.</p>
+          <div class="mt-4 flex flex-col gap-2">
+            <a href={whatsappLink} target="_blank" rel="noopener" class="btn-whatsapp text-sm">WhatsApp {site.phoneDisplay}</a>
+            <a href={telLink} class="btn-secondary text-sm !bg-white/10 !text-white !ring-white/20 hover:!bg-white/20">Call {site.phoneDisplay}</a>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6">
+          <h2 class="font-semibold">Office</h2>
+          <p class="mt-2 text-sm text-slate-700">
+            {site.address.street}<br/>
+            {site.address.suburb}<br/>
+            {site.address.city}, {site.address.postal}
+          </p>
+          <p class="mt-3 text-sm text-slate-500">{site.hours}</p>
+          <a href={site.social.google} target="_blank" rel="noopener" class="mt-4 inline-flex text-sm font-semibold text-[color:var(--color-brand-red)] hover:underline">View on Google Maps →</a>
+        </div>
+
+        <div class="overflow-hidden rounded-2xl border border-slate-200">
+          <iframe
+            title="Techelec office location"
+            src={`https://www.google.com/maps?q=${site.address.geo.lat},${site.address.geo.lng}&z=14&output=embed`}
+            class="aspect-[4/3] w-full"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

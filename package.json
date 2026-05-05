@@ -1,0 +1,21 @@
+{
+  "name": "techelec-solutions-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "netlify deploy --prod --dir=dist",
+    "deploy:new": "node scripts/netlify-new-site.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@tailwindcss/vite": "^4.1.7",
+    "astro": "^5.7.10",
+    "tailwindcss": "^4.1.7"
+  }
+}

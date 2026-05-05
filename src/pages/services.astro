@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import { services } from "../data/services";
+---
+
+<BaseLayout
+  title="Services"
+  description="Solar PV, hybrid backup, three-phase commercial systems, COC inspections and general electrical maintenance across Cape Town."
+>
+  <section class="relative overflow-hidden bg-[color:var(--color-ink)] py-20 text-white">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="relative mx-auto max-w-7xl px-6">
+      <span class="eyebrow !bg-white/10 !text-white">Services</span>
+      <h1 class="mt-4 text-4xl font-bold sm:text-5xl">Every power solution, under one roof</h1>
+      <p class="mt-4 max-w-2xl text-slate-300">Solar, backup, compliance and general electrical work — designed, installed and certified by one Cape Town team.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="space-y-20">
+      {services.map((s, idx) => (
+        <article id={s.slug} class="grid scroll-mt-24 gap-10 lg:grid-cols-5 lg:gap-16">
+          <div class="lg:col-span-3">
+            <span class="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-brand-blue-dark)]">0{idx + 1} · {s.short}</span>
+            <h2 class="mt-2 text-3xl font-bold">{s.title}</h2>
+            <p class="mt-4 text-slate-600 leading-relaxed">{s.blurb}</p>
+            <ul class="mt-6 space-y-3">
+              {s.bullets.map((b) => (
+                <li class="flex gap-3">
+                  <span class="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-[color:var(--color-brand-red)] text-white">
+                    <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span class="text-slate-700">{b}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="/contact/" class="btn-primary mt-8 text-sm">Get a quote on this</a>
+          </div>
+          <div class="lg:col-span-2">
+            <div class="aspect-square rounded-2xl border border-slate-200 bg-gradient-to-br from-slate-50 to-slate-100 p-8 shadow-sm">
+              <div class="flex h-full w-full flex-col items-center justify-center text-center">
+                <div class="flex h-20 w-20 items-center justify-center rounded-full bg-[color:var(--color-brand-red)] text-white">
+                  <svg class="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    {s.icon === "solar" && <><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></>}
+                    {s.icon === "battery" && <><rect x="3" y="7" width="16" height="10" rx="2"/><line x1="21" y1="10" x2="21" y2="14"/></>}
+                    {s.icon === "compliance" && <><path d="M12 2 4 5v6c0 5 3.5 9.3 8 11 4.5-1.7 8-6 8-11V5l-8-3Z"/><polyline points="9 12 11.5 14.5 16 10"/></>}
+                    {s.icon === "maintenance" && <path d="M14.7 6.3a4 4 0 1 0 5 5l-4-4 3-3a6 6 0 0 0-8 8L4 19l1 1 7-7Z"/>}
+                    {s.icon === "industrial" && <><path d="M3 21V11l5 3V11l5 3V11l5 3v7Z"/><line x1="3" y1="21" x2="21" y2="21"/></>}
+                    {s.icon === "agri" && <><path d="M12 22V8"/><path d="M5 8c0-3 3-5 7-5s7 2 7 5c0 3-3 5-7 5s-7-2-7-5Z"/></>}
+                  </svg>
+                </div>
+                <p class="mt-4 text-sm font-semibold uppercase tracking-wider text-slate-500">{s.short}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

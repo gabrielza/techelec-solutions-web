@@ -1,0 +1,23 @@
+---
+interface Props { class?: string; mono?: boolean }
+const { class: className = "h-10 w-auto", mono = false } = Astro.props;
+const red = mono ? "currentColor" : "#d3242b";
+const dark = mono ? "currentColor" : "#0f1720";
+---
+<svg
+  class={className}
+  viewBox="0 0 360 64"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Techelec Solutions"
+>
+  <g font-family="'Space Grotesk', 'Inter', sans-serif" font-weight="700">
+    <text x="0" y="36" font-size="34" fill={red} font-style="italic" letter-spacing="-0.5">TECHELEC</text>
+    <text x="0" y="58" font-size="16" fill={dark} letter-spacing="3">SOLUTIONS</text>
+  </g>
+  <g transform="translate(196, 8)" fill={red}>
+    <path d="M14 22a14 14 0 0 1 14-14" stroke={red} stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M8 22a20 20 0 0 1 20-20" stroke={red} stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="14" cy="22" r="3"/>
+  </g>
+</svg>

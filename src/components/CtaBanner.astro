@@ -1,0 +1,22 @@
+---
+import { whatsappLink } from "../data/site";
+
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<section class:list={["relative overflow-hidden bg-[color:var(--color-ink)] text-white", compact ? "py-16" : "py-24"]}>
+  <div class="absolute inset-0 bg-grid opacity-10"></div>
+  <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-[color:var(--color-brand-red)] blur-3xl opacity-20"></div>
+  <div class="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-[color:var(--color-brand-blue)] blur-3xl opacity-20"></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 text-center">
+    <h2 class="text-3xl font-bold sm:text-4xl">Ready to take back control of your power?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-slate-300">
+      Free site assessment. Honest, itemised quote. No pressure. Whether it's a single-room backup or a full off-grid build — let's chat.
+    </p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <a href="/contact/" class="btn-primary">Request a Quote</a>
+      <a href={whatsappLink} target="_blank" rel="noopener" class="btn-whatsapp">WhatsApp Us Now</a>
+    </div>
+  </div>
+</section>

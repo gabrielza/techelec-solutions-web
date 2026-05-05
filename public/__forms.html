@@ -1,0 +1,14 @@
+<!--
+  Static HTML stub so the Netlify build bots discover the "quote" form.
+  The real, styled form lives in src/pages/contact.astro and posts to /contact/?success=1.
+-->
+<form name="quote" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="tel" name="phone" />
+  <input type="email" name="email" />
+  <input type="text" name="area" />
+  <select name="property"><option></option></select>
+  <input type="checkbox" name="interest" />
+  <textarea name="message"></textarea>
+  <input type="text" name="bot-field" />
+</form>

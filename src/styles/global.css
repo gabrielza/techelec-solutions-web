@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-red: #d3242b;
+  --color-brand-red-dark: #a81a20;
+  --color-brand-blue: #5fb4e2;
+  --color-brand-blue-dark: #2e8bc0;
+  --color-ink: #0f1720;
+  --color-ink-soft: #4b5563;
+  --color-mist: #f5f8fb;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Subtle grid backdrop for industrial feel */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 32, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 32, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-whatsapp {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition-all duration-200;
+}
+.btn-primary {
+  @apply bg-[color:var(--color-brand-red)] text-white shadow-lg shadow-red-500/20 hover:bg-[color:var(--color-brand-red-dark)] hover:shadow-xl hover:-translate-y-0.5;
+}
+.btn-secondary {
+  @apply bg-white text-[color:var(--color-ink)] ring-1 ring-slate-200 hover:ring-[color:var(--color-brand-blue)] hover:text-[color:var(--color-brand-blue-dark)];
+}
+.btn-whatsapp {
+  @apply bg-[#25D366] text-white shadow-lg shadow-emerald-500/20 hover:bg-[#1faa55] hover:-translate-y-0.5;
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full bg-[color:var(--color-brand-blue)]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[color:var(--color-brand-blue-dark)];
+}
+
+.section {
+  @apply mx-auto w-full max-w-7xl px-6 py-20 lg:py-28;
+}

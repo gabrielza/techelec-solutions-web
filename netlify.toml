@@ -1,0 +1,33 @@
+# Suggested Netlify site name when this repo is first imported.
+# Netlify will append a random suffix if 'techelec-solutions' is already taken globally.
+# IMPORTANT: when deploying, ALWAYS create a NEW Netlify site for this repo —
+# do NOT link it to any existing site. See README.md → "Deploying to Netlify".
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[build.processing]
+  skip_processing = false
+[build.processing.html]
+  pretty_urls = true
+
+# Enable Netlify Forms detection on the static stub at /public/__forms.html
+# (The real, styled form lives in src/pages/contact.astro and posts to /contact/?success=1.)
+[forms]
+  # leave empty — presence of [forms] + the stub HTML enables form detection
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -1,0 +1,210 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import FaqList from "../components/FaqList.astro";
+import BrandStrip from "../components/BrandStrip.astro";
+import { services } from "../data/services";
+import { site, whatsappLink } from "../data/site";
+---
+
+<BaseLayout
+  title="Solar, Backup & Electrical Specialists in Cape Town"
+  description="Master Deye solar installers in Cape Town. Grid-tied, hybrid and backup power systems for homes, businesses and farms — every job signed off with a Certificate of Compliance."
+>
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-white">
+    <div class="absolute inset-0 bg-grid"></div>
+    <div class="absolute -top-32 right-0 h-[420px] w-[420px] rounded-full bg-[color:var(--color-brand-blue)] blur-3xl opacity-20"></div>
+    <div class="absolute top-40 -left-32 h-[360px] w-[360px] rounded-full bg-[color:var(--color-brand-red)] blur-3xl opacity-10"></div>
+
+    <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:py-28">
+      <div>
+        <span class="eyebrow">Solar · Backup · Electrical</span>
+        <h1 class="mt-5 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+          Sustainable energy.<br />
+          <span class="text-[color:var(--color-brand-red)]">Affordable</span> prices.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
+          Cape Town's Master Deye installers — designing and fitting solar, hybrid and backup power systems for homes, businesses and farms. Every install signed off with a Certificate of Compliance.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="/contact/" class="btn-primary">Request a Free Quote</a>
+          <a href={whatsappLink} target="_blank" rel="noopener" class="btn-whatsapp">WhatsApp Us</a>
+        </div>
+
+        <ul class="mt-10 grid grid-cols-3 gap-6 border-t border-slate-200 pt-6 text-sm">
+          <li>
+            <p class="text-2xl font-bold text-[color:var(--color-brand-red)]">25 yr</p>
+            <p class="text-slate-500">Panel performance warranty</p>
+          </li>
+          <li>
+            <p class="text-2xl font-bold text-[color:var(--color-brand-red)]">10 yr</p>
+            <p class="text-slate-500">Battery warranty</p>
+          </li>
+          <li>
+            <p class="text-2xl font-bold text-[color:var(--color-brand-red)]">CoC</p>
+            <p class="text-slate-500">Issued on every job</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Hero visual -->
+      <div class="relative">
+        <div class="aspect-[4/5] overflow-hidden rounded-3xl bg-gradient-to-br from-slate-100 to-slate-200 shadow-2xl shadow-slate-300/50 ring-1 ring-slate-200">
+          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" class="h-full w-full" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#bfe2f7"/>
+                <stop offset="100%" stop-color="#f5f8fb"/>
+              </linearGradient>
+              <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1e3a5f"/>
+                <stop offset="100%" stop-color="#0a1628"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#sky)"/>
+            <!-- Sun -->
+            <circle cx="320" cy="90" r="38" fill="#fff7d6"/>
+            <circle cx="320" cy="90" r="26" fill="#ffe27a"/>
+            <!-- House -->
+            <polygon points="80,260 200,170 320,260 320,420 80,420" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+            <!-- Roof solar panels -->
+            <g transform="translate(120,205) rotate(-37)">
+              <rect width="120" height="70" rx="4" fill="url(#panel)"/>
+              <g stroke="#5fb4e2" stroke-width="1" opacity="0.5">
+                <line x1="40" y1="0" x2="40" y2="70"/>
+                <line x1="80" y1="0" x2="80" y2="70"/>
+                <line x1="0" y1="35" x2="120" y2="35"/>
+              </g>
+            </g>
+            <!-- Door + windows -->
+            <rect x="180" y="330" width="40" height="90" fill="#d3242b"/>
+            <rect x="110" y="300" width="40" height="40" fill="#bfe2f7" stroke="#fff" stroke-width="3"/>
+            <rect x="250" y="300" width="40" height="40" fill="#bfe2f7" stroke="#fff" stroke-width="3"/>
+            <!-- Ground -->
+            <rect y="420" width="400" height="80" fill="#e6efe2"/>
+            <!-- Inverter on side -->
+            <rect x="40" y="320" width="34" height="50" rx="4" fill="#ffffff" stroke="#94a3b8"/>
+            <circle cx="57" cy="338" r="6" fill="#5fb4e2"/>
+            <rect x="46" y="350" width="22" height="3" fill="#cbd5e1"/>
+            <rect x="46" y="356" width="22" height="3" fill="#cbd5e1"/>
+          </svg>
+        </div>
+        <!-- Floating cert badge -->
+        <div class="absolute -bottom-6 -left-6 hidden rounded-2xl bg-white p-4 shadow-xl ring-1 ring-slate-200 sm:block">
+          <p class="text-xs font-semibold uppercase tracking-wider text-[color:var(--color-brand-blue-dark)]">Certified</p>
+          <p class="text-sm font-bold">Master Deye Installer</p>
+          <p class="text-xs text-slate-500">PV GreenCard · ECASA</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <BrandStrip />
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow">What we do</span>
+      <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Power solutions, end to end</h2>
+      <p class="mt-4 text-slate-600">From a single backup unit to a full three-phase commercial install — designed, supplied and certified by one team.</p>
+    </div>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => <ServiceCard service={s} />)}
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="bg-mist" style="background-color:var(--color-mist)">
+    <div class="section">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div>
+          <span class="eyebrow">Why Techelec</span>
+          <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Honest engineering, properly installed</h2>
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            We're a small, hands-on team of qualified electricians and PV specialists. No high-pressure sales, no oversized systems — just a properly sized solution, neatly installed, with the paperwork to prove it.
+          </p>
+
+          <ul class="mt-8 space-y-4">
+            {[
+              { t: "Right-sized systems", d: "We design to your actual usage — not what's easiest to sell." },
+              { t: "Top-tier components", d: "Tier-1 panels, name-brand inverters, lithium batteries with 10-year warranties." },
+              { t: "Compliance on every job", d: "Department of Labour CoC issued, plus signed-off PV GreenCard documents." },
+              { t: "Local & responsive", d: "Cape Town based — site visits, call-outs and aftercare from people you can actually reach." },
+            ].map((item) => (
+              <li class="flex gap-4">
+                <span class="mt-0.5 flex h-7 w-7 flex-none items-center justify-center rounded-full bg-[color:var(--color-brand-red)] text-white">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <div>
+                  <p class="font-semibold">{item.t}</p>
+                  <p class="text-sm text-slate-600">{item.d}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          {site.certifications.map((c) => (
+            <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+              <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-[color:var(--color-brand-blue)]/10 text-[color:var(--color-brand-blue-dark)]">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.5 9.3 8 11 4.5-1.7 8-6 8-11V5l-8-3Z"/><polyline points="9 12 11.5 14.5 16 10"/></svg>
+              </div>
+              <p class="mt-4 font-semibold">{c.name}</p>
+              <p class="mt-1 text-sm text-slate-500">{c.note}</p>
+            </div>
+          ))}
+          <div class="col-span-2 rounded-2xl bg-[color:var(--color-ink)] p-6 text-white">
+            <p class="text-sm opacity-80">Serving the entire</p>
+            <p class="text-xl font-bold">Cape Town Metro &amp; Western Cape</p>
+            <p class="mt-2 text-sm opacity-80">Northern &amp; Southern Suburbs · Helderberg · Atlantic Seaboard · Winelands · West Coast</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="eyebrow">How it works</span>
+      <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Four simple steps</h2>
+    </div>
+    <ol class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {[
+        { n: "01", t: "Free Site Visit", d: "We assess your roof, DB board and load profile — no obligation." },
+        { n: "02", t: "Itemised Quote", d: "Clear pricing on every panel, inverter, battery and labour line." },
+        { n: "03", t: "Install in 1 – 2 days", d: "Neat, on-time install by our qualified electricians." },
+        { n: "04", t: "Sign-off & Aftercare", d: "Full CoC, system walkthrough and ongoing support." },
+      ].map((step) => (
+        <li class="relative rounded-2xl border border-slate-200 bg-white p-6">
+          <span class="font-display text-4xl font-bold text-[color:var(--color-brand-blue)]/30">{step.n}</span>
+          <p class="mt-3 text-lg font-semibold">{step.t}</p>
+          <p class="mt-1 text-sm text-slate-600">{step.d}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-mist" style="background-color:var(--color-mist)">
+    <div class="section">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="mt-3 text-3xl font-bold sm:text-4xl">Common questions</h2>
+        <p class="mt-4 text-slate-600">Everything customers ask before signing off a job.</p>
+      </div>
+      <div class="mt-12">
+        <FaqList limit={4} />
+        <p class="mt-8 text-center">
+          <a href="/faq/" class="text-sm font-semibold text-[color:var(--color-brand-red)] hover:underline">See all FAQs →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBanner />
+</BaseLayout>

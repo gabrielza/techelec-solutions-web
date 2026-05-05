@@ -1,0 +1,15 @@
+---
+import { site } from "../data/site";
+---
+<section class="bg-mist border-y border-slate-100 py-10" style="background-color:var(--color-mist)">
+  <div class="mx-auto max-w-7xl px-6">
+    <p class="text-center text-xs font-semibold uppercase tracking-widest text-slate-500">
+      Trusted brands we install &amp; service
+    </p>
+    <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-lg font-semibold text-slate-700">
+      {site.brands.map((b) => (
+        <li class="opacity-70 hover:opacity-100 transition">{b}</li>
+      ))}
+    </ul>
+  </div>
+</section>

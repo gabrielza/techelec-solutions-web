@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://techelecsolutions.co.za/sitemap-index.xml
